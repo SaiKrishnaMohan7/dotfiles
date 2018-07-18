@@ -66,6 +66,11 @@ function goaws(){
     ssh -i "$1" ec2-user@"$2"
 }
 
+function deploy(){
+    echo "Deploying the current version of the project to Heroku"
+    git push heroku
+    heroku open
+}
 ####################################################################################
 
 ####################################################################################
