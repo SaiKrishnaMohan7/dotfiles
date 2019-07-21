@@ -1,13 +1,12 @@
-# Virtual Env Management
-export WORKON_HOME=$HOME/Projects/VirtualEnvs
-export PROJECT_HOME=$HOME/Projects
-source /usr/local/bin/virtualenvwrapper.sh
-
 # NVM and Node things
-export NVM_DIR=/Users/saikrishnamohan/.nvm
-[[ -s $HOME/.nvm/nvm.sh ]] && . $HOME/.nvm/nvm.sh  # This loads NVM
-# nvm use v8.11.2
-# nvm use v10.3.0
+export NVM_DIR=~/.nvm
+source $(brew --prefix nvm)/nvm.sh
+source ~/.env
+
+nvm use 10.16.0 # LTS
+# nvm use 10.9.0
+# nvm use 10.15.1
+# nvm use 12.4.0 # latest
 
 #theFuck
 eval $(thefuck --alias)
@@ -50,6 +49,8 @@ alias lsd="ls -ao | ack \^d --no-color"
 
 # list files
 alias lsf="ls -ao | ack -v \^d --no-color"
+
+alias checkLink="ls -al $(npm root -g)"
 ####################################################################################
 
 ####################################################################################
@@ -80,6 +81,7 @@ alias gaa="git add --all"
 alias gca="git commit --all -m" #"insert commit message here after a space"
 alias gnbr="git checkout develop; git checkout -b" #"name/of-new-branch-here-after-a-space"
 alias gsa="git status"
+alias gm="git checkout master"
 
 #shows the last 10 branches you were on
 alias branchhistory="git for-each-ref --sort=committerdate refs/heads/ --format='%(refname) %(committerdate) %(authorname)' | sed 's/refs\/heads\///g' | awk '{print \$1}' | tail"
@@ -87,7 +89,7 @@ alias branchhistory="git for-each-ref --sort=committerdate refs/heads/ --format=
 # shows you the current branch
 alias gbr="git branch"
 
-# update current branch from remote branch 
+# update current branch from remote branch
 alias gpull="git pull origin" #branch-to-remote-pull-from-into-current-branch
 
 # push current branch to remote equivalent
@@ -99,7 +101,7 @@ alias gapply="git stash apply"
 
 # see differences between given branch and develop branch
 function g_diff {
-	git diff $1 develop | ack '^-{3}' | awk '{print $2}' 
+	git diff $1 develop | ack '^-{3}' | awk '{print $2}'
 }
 
 # Works with the above PS1 export.
@@ -131,14 +133,51 @@ alias nukenode="ps aux | ack 'npm\|node\|gulp\|nodemon' | awk '{print \$2}' | su
 
 #=== FUNCTION ==================================================================
 #        NAME:  searchfn
-# DESCRIPTION:  Search that matches all files in the current directory or its         
-#               subdirectories with the given text anywhere in their file name 
+# DESCRIPTION:  Search that matches all files in the current directory or its
+#               subdirectories with the given text anywhere in their file name
 #===============================================================================
 function searchfn {
   find . -regex ".*$1[^\/]*$" 2>/dev/null
 }
 
+#=== FUNCTION ==================================================================
+#        NAME:  Port scan
+# DESCRIPTION:  Scans the give port to check what is using the port
+#===============================================================================
+function portScan() {
+    lsof -nP -i:"$1" | grep LISTEN
+}
 
+#=== FUNCTION ==================================================================
+#        NAME:  devProxy Functions
+# DESCRIPTION:  Starts dev-proxy under sudo
+#===============================================================================
+function devProxyStart {
+    sudo dev-proxy start
+}
+
+function devProxyStop {
+    sudo dev-proxy stop
+}
+
+function devProxyConfigure {
+    sudo dev-proxy configure "$1"
+}
+
+function iDevProxy {
+    sudo npm i -g @console/local-dev-proxy
+}
+
+#=== FUNCTION ==================================================================
+#        NAME:  nodeDebugChrome
+# DESCRIPTION:  Connects the debugger to chrone devtools
+#===============================================================================
+
+function nodeDebugChrome {
+    echo "Usage: nodeDebugChrome <fileName>, this is for JEST"
+
+    node --inspect-brk node_modules/.bin/jest  "$1" --runInBand
+}
 ##################################################################################
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ AUTOCOMPLETIONS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ##################################################################################
@@ -171,19 +210,13 @@ alias p="python"
 alias p3i="pip3 install"
 alias p2i="pip install"
 
-# Function to convert Py2 scripts to Py3
-function convertScripts {
-    ls *.py | xargs 2to3 -w
-}
-####################################################################################
-# NAVIGATION TO PROJECTS / Tensorflow Aliases
-####################################################################################
-alias tf="cd tensorflow" 
-alias atf="source bin/activate"
-alias gonlt="cd Projects/ML/NLTKTutorial"
-alias goproj="cd Projects"
+##########SERVICES#################
+alias rs="redis-server"
+alias rsre="redis-cli shutdown; rs"
 
-# Setting PATH for Python 3.6
-# The original version is saved in .bash_profile.pysave
-PATH="/Library/Frameworks/Python.framework/Versions/3.6/bin:${PATH}"
-export PATH
+##########SYMLINK##################
+alias goproj="cd Projects"
+# Shows all symlinks at global level
+alias gsym="ls -al $(npm root -g)"
+# Shows all symlinks at local level
+alias lsym="ls -al ./node_modules"
