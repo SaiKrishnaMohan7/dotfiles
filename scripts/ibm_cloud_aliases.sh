@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 #=== FUNCTION ==================================================================
 #        NAME:  devProxy Functions
 # DESCRIPTION:  Starts dev-proxy under sudo

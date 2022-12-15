@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 alias rzsh="source ~/.zshrc"
 alias zshconfig="code ~/.zshrc"
 alias p10kconfig="code .p10k.zsh"

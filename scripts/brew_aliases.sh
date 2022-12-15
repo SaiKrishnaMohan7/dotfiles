@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 alias b="brew"
 alias bi="brew install"
 alias bicask="brew install --cask" # for installing mac apps like this brew install --cask firefox
