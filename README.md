@@ -16,6 +16,3 @@ My dotfiles repo
 ## Why this?
 
 Maintaining the same devex across all the machines at my disposal helps me to be productive and get up and running faster
-
-
-THISISIS a test to yadm pull
