@@ -1,6 +1,12 @@
 [user]
   name = Sai Krishna Mohan
   email = m.saikrishna.msk@gmail.com
+[personal]
+  name = Sai Krishna Mohan
+  email = m.saikrishna.msk@gmail.com
+[work]
+  name = Sai Mohan
+  email = sai.mohan@aquanow.io
 [core]
   editor = code
   excludesfile = ~/.gitignore
@@ -20,3 +26,7 @@
   default = simple
 [pull]
 	rebase = true
+[alias]
+  whoami= !git config --global user.name && git config --global user.email
+  setpersonal= !git config --global user.name \""$(git config personal.name)"\" && git config --global user.email "$(git config personal.email)" && git whoami
+  setwork= !git config --global user.name \""$(git config work.name)"\" && git config --global user.email "$(git config work.email)" && git whoami
