@@ -11,6 +11,8 @@
   editor = code --wait
   excludesfile = ~/.gitignore
   autocrlf = input
+[commit]
+  template = ~/.git_commit_template
 [color]
   branch = auto
   diff = auto
