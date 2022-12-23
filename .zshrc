@@ -126,7 +126,7 @@ source $ZSH/oh-my-zsh.sh
 # For a full list of active aliases, run `alias`.
 #
 
-export SCRIPTS_DIR="./scripts"
+export SCRIPTS_DIR="$HOME/scripts"
 # Not the nicest approach around picking and choosing which script to source but
 # the small test case seems to work
 declare -a FILES_TO_SOURCE

@@ -32,13 +32,20 @@ alias gapply="git stash apply"
 function cloneRepo () {
 	echo "Clone Repos to use with git worktrees; \n"
 	vared -p 'Directory Name: ' -c dirName
-	vared -p 'Git Url of repo: ' -c gitCloneUrl
 
 	echo "Creating Directory, $dirName... \n"
 	mkdir $dirName
 	echo "Cloning into $dirName and creating a .bare directory... \n"
-	git clone --bare $gitCloneUrl $dirName/.bare
+	git clone --bare $1 $dirName/.bare
 	echo "Creating .git file in $dirName with gitdir set to ./bare \n"
 	echo "gitdir: ./.bare" > $dirName/.git
+	echo "Change dir to $dirName/.bare to run git commads \n"
+	cd $dirName/.bare
+	# Explicitly sets the remote origin fetch so we can fetch remote branches
+	git config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"
+	# Gets all branches from origin
+	git fetch origin
+	echo "Change directory $dirName"
+	cd ..
 	echo "DONE..."
 }
