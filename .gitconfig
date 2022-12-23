@@ -8,7 +8,7 @@
   name = Sai Mohan
   email = sai.mohan@aquanow.io
 [core]
-  editor = code
+  editor = code --wait
   excludesfile = ~/.gitignore
   autocrlf = input
 [color]
