@@ -137,7 +137,6 @@ FILES_TO_SOURCE=(
   "folder_nav_aliases.sh"
   "git_aliases.sh"
   "kube_aliases.sh"
-  "tmux_aliases.sh"
 )
 # Loop through the scripts folder and source the files
 for FILE in "${FILES_TO_SOURCE[@]}"; do
