@@ -12,6 +12,7 @@ My dotfiles repo
 - [x] I think yadm handles symlinks, this needs to be tested. From the look of it does seem like it handles symlinks
   - yadm does more of a bare repo action
 - [ ] Kube config and kube plugins stuff
+- [ ] tmux is a bridge that I will cross when necessary
 
 ## Tools being used
 
