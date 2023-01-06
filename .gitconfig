@@ -1,6 +1,6 @@
 [user]
-	name = Sai Krishna Mohan
-	email = m.saikrishna.msk@gmail.com
+	name = Sai Mohan
+	email = sai.mohan@aquanow.io
 [personal]
   name = Sai Krishna Mohan
   email = m.saikrishna.msk@gmail.com
@@ -26,6 +26,8 @@
   helper = osxkeychain
 [push]
   default = simple
+  # new in git 2.37, setup remote branch with tracking automatically
+  autoSetupRemote = true
 [pull]
 	rebase = true
 [alias]
