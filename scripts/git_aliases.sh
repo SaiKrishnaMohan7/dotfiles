@@ -72,5 +72,8 @@ function newWorktree() {
 	echo "Running docker-compose up..."
 	docker-compose up -d
 
+	echo "Opening VSC in $folderNameOrPath"
+	code .
+
 	echo "DONE..."
 }
