@@ -49,3 +49,28 @@ function cloneRepo () {
 	cd ..
 	echo "DONE..."
 }
+
+function newWorktree() {
+	echo "Usage: gwa <branchName> <folderNameOrPath> origin/<branchNameIfCloneFromRemote>"
+
+	vared -p 'branch name: ' -c branchName
+	vared -p 'folderNameOrPath: ' -c folderNameOrPath
+	vared -p 'origin branch name: ' -c originBranchName
+
+	echo "Creating new worktree in folder: $folderNameOrPath, branch: $branchName, branchOffOf: $originBranchName"
+	gwa -b $branchName $folderNameOrPath $originBranchName
+
+	echo "cd into $folderNameOrPath"
+	cd $folderNameOrPath
+
+	echo "Copying dev env file to your new worktree at: $folderNameOrPath"
+	cp ../main/.env .
+
+	echo "Running npm install..."
+	npm i
+
+	echo "Running docker-compose up..."
+	docker-compose up -d
+
+	echo "DONE..."
+}

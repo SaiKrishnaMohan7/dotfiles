@@ -9,3 +9,4 @@
 # alias sdstp= "sudo service docker stop"
 
 #This is linux specific not used for Mac
+alias dkd="docker-compose down -v"
