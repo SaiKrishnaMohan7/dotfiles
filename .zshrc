@@ -132,6 +132,7 @@ export SCRIPTS_DIR="$HOME/scripts"
 declare -a FILES_TO_SOURCE
 FILES_TO_SOURCE=(
   "brew_aliases.sh"
+  "docker_aliases.sh"
   "convenience_aliases.sh"
   "convenience_functions.sh"
   "folder_nav_aliases.sh"
