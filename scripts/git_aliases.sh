@@ -51,8 +51,6 @@ function cloneRepo () {
 }
 
 function newWorktree() {
-	echo "Usage: gwa <branchName> <folderNameOrPath> origin/<branchNameIfCloneFromRemote>"
-
 	vared -p 'branch name: ' -c branchName
 	vared -p 'folderNameOrPath: ' -c folderNameOrPath
 	vared -p 'origin branch name: ' -c originBranchName
@@ -74,6 +72,17 @@ function newWorktree() {
 
 	echo "Opening VSC in $folderNameOrPath"
 	code .
+
+	echo "DONE..."
+}
+
+function rmWorktree() {
+	vared -p 'folderNameOrPath to delete: ' -c folderNameOrPathToDelete
+	vared -p 'branch name to remove: ' -c branchNameToRemove
+
+	echo "deleting folder: $folderNameOrPathToDelete and branch: $branchNameToRemove"
+
+	gwr $folderNameOrPathToDelete; git branch -D $branchNameToRemove
 
 	echo "DONE..."
 }
