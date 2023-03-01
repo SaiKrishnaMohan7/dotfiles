@@ -55,22 +55,22 @@ function newWorktree() {
 	vared -p 'folderNameOrPath: ' -c folderNameOrPath
 	vared -p 'origin branch name: ' -c originBranchName
 
-	echo "Creating new worktree in folder: $folderNameOrPath, branch: $branchName, branchOffOf: $originBranchName"
+	echo "###Creating new worktree in folder: $folderNameOrPath, branch: $branchName, branchOffOf: $originBranchName"
 	gwa -b $branchName $folderNameOrPath $originBranchName
 
-	echo "cd into $folderNameOrPath"
+	echo ">>>cd into $folderNameOrPath"
 	cd $folderNameOrPath
 
-	echo "Copying dev env file to your new worktree at: $folderNameOrPath"
+	echo "###Copying dev env file to your new worktree at: $folderNameOrPath"
 	cp ../main/.env .
 
-	echo "Running npm install..."
+	echo ">>>Running npm install..."
 	npm i
 
-	echo "Running docker-compose up..."
+	echo "###Running docker-compose up..."
 	docker-compose up -d
 
-	echo "Opening VSC in $folderNameOrPath"
+	echo ">>>Opening VSC in $folderNameOrPath"
 	code .
 
 	echo "DONE..."
