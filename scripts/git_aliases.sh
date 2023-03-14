@@ -63,6 +63,7 @@ function newWorktree() {
 
 	echo "###Copying dev env file to your new worktree at: $folderNameOrPath"
 	cp ../main/.env .
+	cp -R ../main/.vscode .
 
 	echo ">>>Running npm install..."
 	npm i
