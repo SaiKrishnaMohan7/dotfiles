@@ -139,6 +139,7 @@ FILES_TO_SOURCE=(
   "git_aliases.sh"
   "kube_aliases.sh"
   "pretties.sh"
+  "ssh_aliases.sh"
 )
 # Loop through the scripts folder and source the files
 for FILE in "${FILES_TO_SOURCE[@]}"; do

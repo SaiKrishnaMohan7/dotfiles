@@ -63,12 +63,14 @@ function newWorktree() {
 
 	echo "###Copying dev env file to your new worktree at: $folderNameOrPath"
 	cp ../main/.env .
+
+	echo ">>>Copying .vscode new worktree at: $folderNameOrPath"
 	cp -R ../main/.vscode .
 
-	echo ">>>Running npm install..."
+	echo "###Running npm install..."
 	npm i
 
-	echo "###Running docker-compose up..."
+	echo ">>>Running docker-compose up..."
 	docker-compose up -d
 
 	echo ">>>Opening VSC in $folderNameOrPath"
