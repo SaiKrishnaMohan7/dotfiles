@@ -3,8 +3,6 @@ My dotfiles repo
 
 ## TODOs
 
-- [ ] .yabairc
-- [ ] .skhdrc
 - [x] /the zshrc loader should have a ignore files array to ignore scripts that are of no use
   - Chose to go with include file style
 - [x] p10k has special fonts, nerd fonts I think, there has to be a mac way of automating that too
