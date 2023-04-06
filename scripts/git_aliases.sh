@@ -30,24 +30,24 @@ alias gstash="git stash" # store current branch temporarily
 alias gapply="git stash apply"
 
 function cloneRepo () {
-	echo "Clone Repos to use with git worktrees; \n"
+	printf "Clone Repos to use with git worktrees; \n \n"
 	vared -p 'Directory Name: ' -c dirName
 
-	echo "Creating Directory, $dirName... \n"
+	printf "Creating Directory, $dirName... \n \n"
 	mkdir $dirName
-	echo "Cloning into $dirName and creating a .bare directory... \n"
+	printf "Cloning into $dirName and creating a .bare directory... \n \n"
 	git clone --bare $1 $dirName/.bare
-	echo "Creating .git file in $dirName with gitdir set to ./bare \n"
-	echo "gitdir: ./.bare" > $dirName/.git
-	echo "Change dir to $dirName/.bare to run git commads \n"
+	printf "Creating .git file in $dirName with gitdir set to ./bare \n \n"
+	printf "gitdir: ./.bare" > $dirName/.git
+	printf "Change dir to $dirName/.bare to run git commads \n \n"
 	cd $dirName/.bare
 	# Explicitly sets the remote origin fetch so we can fetch remote branches
 	git config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"
 	# Gets all branches from origin
 	git fetch origin
-	echo "Change directory $dirName"
+	printf "Change directory $dirName"
 	cd ..
-	echo "DONE..."
+	printf "DONE..."
 }
 
 function newWorktree() {
@@ -56,41 +56,41 @@ function newWorktree() {
 	vared -p 'origin branch name: ' -c originBranchName
 	vared -p 'app name: ' -c appName
 
-	echo "###Creating new worktree in folder: $folderNameOrPath, branch: $branchName, branchOffOf: $originBranchName"
+	printf "###Creating new worktree in folder: $folderNameOrPath, branch: $branchName, branchOffOf: $originBranchName \n \n"
 	gwa -b $branchName $folderNameOrPath $originBranchName
 
-	echo ">>>cd into $folderNameOrPath"
+	printf ">>>cd into $folderNameOrPath \n \n"
 	cd $folderNameOrPath
 
-	echo "###Copying dev env file to your new worktree at: $folderNameOrPath"
+	printf "###Copying dev env file to your new worktree at: $folderNameOrPath \n \n"
 	cp ../develop/.env .
 
-	echo ">>>Copying .vscode new worktree at: $folderNameOrPath"
+	printf ">>>Copying .vscode new worktree at: $folderNameOrPath \n \n"
 	cp -R ../develop/.vscode .
 
-	echo "###Running npm install..."
+	printf "###Running npm install... \n \n"
 	npm i
 
-	echo ">>> cd into apps/$appName"
+	printf ">>> cd into apps/$appName \n \n"
 	cd apps/aquacams/$appName
 
-	echo "### Running docker-compose up..."
+	printf "### Running docker-compose up... \n \n"
 	docker-compose up -d
 
-	echo ">>>Opening VSC in $folderNameOrPath"
+	printf ">>>Opening VSC in $folderNameOrPath \n \n"
 	cd ../../..
 	code .
 
-	echo "DONE..."
+	printf "DONE..."
 }
 
 function rmWorktree() {
 	vared -p 'folderNameOrPath to delete: ' -c folderNameOrPathToDelete
 	vared -p 'branch name to remove: ' -c branchNameToRemove
 
-	echo "deleting folder: $folderNameOrPathToDelete and branch: $branchNameToRemove"
+	printf "deleting folder: $folderNameOrPathToDelete and branch: $branchNameToRemove \n \n"
 
 	gwr $folderNameOrPathToDelete; git branch -D $branchNameToRemove
 
-	echo "DONE..."
+	printf "DONE..."
 }
