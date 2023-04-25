@@ -56,6 +56,7 @@ function newWorktree() {
 	vared -p 'origin branch name: ' -c originBranchName
 	vared -p 'app name: ' -c appName
 
+# Check pwd
 	printf "###Creating new worktree in folder: $folderNameOrPath, branch: $branchName, branchOffOf: $originBranchName \n \n"
 	gwa -b $branchName $folderNameOrPath $originBranchName
 
@@ -67,6 +68,9 @@ function newWorktree() {
 
 	printf ">>>Copying .vscode new worktree at: $folderNameOrPath \n \n"
 	cp -R ../develop/.vscode .
+
+	printf ">>>Copying .npmrc new worktree at: $folderNameOrPath \n \n"
+	cp -R ../develop/.npmrc .
 
 	printf "###Running npm install... \n \n"
 	npm i
