@@ -68,7 +68,10 @@ function newWorktree() {
 	cd $folderNameOrPath
 
 	printf "###Copying dev env file to your new worktree at: $folderNameOrPath \n \n"
-	cp ../develop/.env .
+	cp ../develop/apps/aquacams/node-server/.env ./apps/aquacams/node-server
+
+	printf "###Copying dev env file to your new worktree at: $folderNameOrPath \n \n"
+	cp ../develop/apps/aquacams/webapp/.env ./apps/aquacams/webapp
 
 	printf ">>>Copying .vscode new worktree at: $folderNameOrPath \n \n"
 	cp -R ../develop/.vscode .
