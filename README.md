@@ -5,7 +5,6 @@ My dotfiles repo
 
 - [ ] Figure out a better way to save and sync vscode/cursor settings
 - [ ] Kube config and kube plugins stuff
-- [ ] tmux is a bridge that I will cross when necessary
 
 ## Tools being used
 
