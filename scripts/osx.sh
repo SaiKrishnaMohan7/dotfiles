@@ -29,7 +29,11 @@ if [[ $EUID -ne 0 ]]; then
 else
   RUN_AS_ROOT=true
   # Update existing `sudo` timestamp until `.osx` has finished
-  while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+  while true; do
+    sudo -n true
+    sleep 60
+    kill -0 "$$" || exit
+  done 2>/dev/null &
 fi
 
 ###############################################################################
@@ -85,7 +89,7 @@ defaults write com.apple.dock launchanim -bool true
 defaults write com.apple.dock autohide -bool true
 
 # Stop iTunes from responding to the keyboard media keys
-launchctl unload -w /System/Library/LaunchAgents/com.apple.rcd.plist 2> /dev/null
+launchctl unload -w /System/Library/LaunchAgents/com.apple.rcd.plist 2>/dev/null
 
 # Require password immediately after sleep or screen saver begins
 defaults write com.apple.screensaver askForPassword -int 1
@@ -189,7 +193,7 @@ if [[ "$RUN_AS_ROOT" = true ]]; then
   sudo defaults write /.Spotlight-V100/VolumeConfiguration Exclusions -array "/Volumes"
 
   # Restart spotlight
-  killall mds > /dev/null 2>&1
+  killall mds >/dev/null 2>&1
 fi
 
 ###############################################################################
@@ -202,6 +206,10 @@ defaults write com.apple.ActivityMonitor OpenMainWindow -bool true
 # Show all processes in Activity Monitor
 defaults write com.apple.ActivityMonitor ShowCategory -int 0
 
+# Setup VS Code to open in native tabs
+echo "Configuring VS Code to open in native tabs..."
+defaults write com.microsoft.VSCode AppleWindowTabbingMode always
+
 ###############################################################################
 # Kill/restart affected applications                                          #
 ###############################################################################
@@ -209,7 +217,7 @@ defaults write com.apple.ActivityMonitor ShowCategory -int 0
 # Restart affected applications if `--no-restart` flag is not present.
 if [[ ! ($* == *--no-restart*) ]]; then
   for app in "cfprefsd" "Dock" "Finder" "Mail" "SystemUIServer" "Terminal"; do
-    killall "${app}" > /dev/null 2>&1
+    killall "${app}" >/dev/null 2>&1
   done
 fi
 
