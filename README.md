@@ -7,6 +7,7 @@ My dotfiles repo
 - [ ] Kube config and kube plugins stuff
 - [ ] Add choice for which cloud provider
   -[ ] Cloud tools like K9s
+- [ ] Add tool [there](https://there.pm/?mc_cid=adc032a628&mc_eid=e8e27132ee)
 
 ## Tools being used
 
