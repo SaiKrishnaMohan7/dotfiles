@@ -5,6 +5,8 @@ My dotfiles repo
 
 - [ ] Figure out a better way to save and sync vscode/cursor settings
 - [ ] Kube config and kube plugins stuff
+- [ ] Add choice for which cloud provider
+  -[ ] Cloud tools like K9s
 
 ## Tools being used
 
@@ -21,3 +23,4 @@ Maintaining the same devex across all the machines at my disposal helps me to be
   - [ ] Script folder creation adn directory setup
     - PWD, Work dir, personal dir
 - [ ] Setup git worktrees for day to day work
+
