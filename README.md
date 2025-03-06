@@ -8,6 +8,7 @@ My dotfiles repo
 - [ ] Add choice for which cloud provider
   -[ ] Cloud tools like K9s
 - [ ] Add tool [there](https://there.pm/?mc_cid=adc032a628&mc_eid=e8e27132ee)
+- [ ] Migrate this entire thing to follow the XDG standard, keeps the clutter away from $HOME dir
 
 ## Tools being used
 
