@@ -32,3 +32,12 @@ function listInstalledPackages() {
     fi
 
 }
+
+#=== FUNCTION ==================================================================
+#        NAME:  zipAndPwProtectFolder
+# DESCRIPTION:  zips and password protects folder
+#===============================================================================
+function zipAndPwProtectFolder() {
+    echo "Usage: zipAndPwProtectFolder <nameOrLocationToSaveOfZip> <pathToFolder>"
+    zip -er "$1" "$2"
+}
