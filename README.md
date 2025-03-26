@@ -10,8 +10,8 @@ My dotfiles repo
 - [ ] Add tool [there](https://there.pm/?mc_cid=adc032a628&mc_eid=e8e27132ee)
 - [ ] Add [air - hot reloading Go](https://github.com/air-verse/air)
 - [ ] Migrate this entire thing to follow the XDG standard, keeps the clutter away from $HOME dir
-- [ ] Something happened to old automation script... write a new one
-  - installs brew
+- you forgot about [this, you dodo](https://github.com/SaiKrishnaMohan7/ansible_automation/tree/main)
+  - Make it better
   - All other brew packages (Brewfile?)
 
 ## Tools being used
