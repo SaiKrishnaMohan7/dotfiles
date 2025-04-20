@@ -14,6 +14,7 @@ My dotfiles repo
   - Make it better
   - All other brew packages (Brewfile?)
 - [ ] Add new aliases to use coreutils (GNU utils) on mac instead of BSD versions
+- [ ] source /opt/homebrew/opt/asdf/libexec/asdf.sh to .zshrc for 
 
 ## Tools being used
 
