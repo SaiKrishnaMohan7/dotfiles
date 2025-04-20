@@ -13,6 +13,7 @@ My dotfiles repo
 - you forgot about [this, you dodo](https://github.com/SaiKrishnaMohan7/ansible_automation/tree/main)
   - Make it better
   - All other brew packages (Brewfile?)
+- [ ] Add new aliases to use coreutils (GNU utils) on mac instead of BSD versions
 
 ## Tools being used
 
