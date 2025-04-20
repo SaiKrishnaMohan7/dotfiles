@@ -3,9 +3,9 @@
 ####################################################################################
 # FOLDER NAV ALIASES
 ####################################################################################
-export PROJECTS="$HOME/Projects"
-export WORK="$PROJECTS/Work"
-export PERSONAL="$PROJECTS/Personal"
+export PROJECTS="$HOME/projects"
+export WORK="$PROJECTS/work"
+export PERSONAL="$PROJECTS/personal"
 PERSONAL_SSH="ssh -i ~/.ssh/personal/id_ed25519 -T git@github.com"
 WORK_SSH="ssh -i ~/.ssh/work/id_ed25519 -T git@github.com"
 
@@ -37,3 +37,19 @@ function goPersonal() {
 
   echo "DONE"
 }
+
+# replace BSD utils with GNU core utils installed via brew
+alias ls="gls --color=auto"
+alias cat="bat"  # if you want pretty `cat`, use bat
+alias date="gdate"
+alias head="ghead"
+alias tail="gtail"
+alias du="gdu"
+alias df="gdf"
+alias sort="gsort"
+alias cut="gcut"
+alias wc="gwc"
+alias cp="gcp"
+alias mv="gmv"
+alias rm="grm"
+alias stat="gstat"

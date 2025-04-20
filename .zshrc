@@ -7,6 +7,7 @@ fi
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
 export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
 
@@ -21,14 +22,13 @@ export SSH_AUTH_SOCK=~/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agen
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
-# Path to krew installation, plugin manager for kubernetes
-export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
-
 # Cargo Rust
 source "$HOME/.cargo/env"
 
 # Path to Go binary
 export PATH=$PATH:/usr/local/go/bin
+# go version management
+source /opt/homebrew/opt/asdf/libexec/asdf.sh to .zshrc for
 
 # Path to act local gh action runner
 export PATH="${HOME}/bin:${PATH}"
@@ -99,7 +99,7 @@ HIST_STAMPS="yyyy-mm-dd"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git kubectl terraform docker helm zsh-autosuggestions)
+plugins=(zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -111,11 +111,7 @@ source $ZSH/oh-my-zsh.sh
 # export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='code'
-# else
-#   export EDITOR='mvim'
-# fi
+  export EDITOR='code'
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -126,22 +122,21 @@ source $ZSH/oh-my-zsh.sh
 # For a full list of active aliases, run `alias`.
 #
 
+# Load dotfiles environment config
+[ -f "$HOME/.env.dotfiles" ] && source "$HOME/.env.dotfiles"
+
+# Define script base directory
 export SCRIPTS_DIR="$HOME/scripts"
-# Not the nicest approach around picking and choosing which script to source but
-# the small test case seems to work
-declare -a FILES_TO_SOURCE
-FILES_TO_SOURCE=(
-  "brew_aliases.sh"
-  "docker_aliases.sh"
-  "convenience_aliases.sh"
-  "convenience_functions.sh"
-  "folder_nav_aliases.sh"
-  "git_aliases.sh"
-  "kube_aliases.sh"
-  "pretties.sh"
-  "ssh_aliases.sh"
-)
-# Loop through the scripts folder and source the files
-for FILE in "${FILES_TO_SOURCE[@]}"; do
-  source $SCRIPTS_DIR/$FILE
-done
+
+# Load all shared/common scripts
+if [[ -d "$SCRIPTS_DIR/common" ]]; then
+  for f in "$SCRIPTS_DIR/common/"*.sh; do
+    [ -f "$f" ] && source "$f"
+  done
+fi
+
+# Conditionally load cloud provider scripts
+if [[ -n "$CLOUD_PROVIDER" && -f "$SCRIPTS_DIR/cloud/${CLOUD_PROVIDER}_aliases.sh" ]]; then
+  source "$SCRIPTS_DIR/cloud/${CLOUD_PROVIDER}_aliases.sh"
+fi
+
