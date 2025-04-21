@@ -8,6 +8,9 @@ fi
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
+# homebrew to path
+export PATH=$PATH:/opt/homebrew/bin
+
 export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
 
@@ -28,7 +31,7 @@ source "$HOME/.cargo/env"
 # Path to Go binary
 export PATH=$PATH:/usr/local/go/bin
 # go version management
-source /opt/homebrew/opt/asdf/libexec/asdf.sh to .zshrc for
+source /opt/homebrew/opt/asdf/libexec/asdf.sh
 
 # Path to act local gh action runner
 export PATH="${HOME}/bin:${PATH}"
