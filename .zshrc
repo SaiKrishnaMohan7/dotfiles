@@ -17,7 +17,7 @@ export PATH="$VOLTA_HOME/bin:$PATH"
 # Setting for 1password cli to use biometrics
 export OP_BIOMETRIC_UNLOCK_ENABLED=true
 # Use 1password ssh client
-export SSH_AUTH_SOCK=~/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock
+# export SSH_AUTH_SOCK=~/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
