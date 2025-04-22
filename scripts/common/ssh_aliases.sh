@@ -14,6 +14,7 @@ function setupGitHubSSH() {
 
   if [[ -z "$email" ]]; then
     echo "❌ Usage: setupGitHubSSH <email> [label]"
+    echo "ex: setupGitHubSSH you@example.com 'Work Laptop'"
     return 1
   fi
 
