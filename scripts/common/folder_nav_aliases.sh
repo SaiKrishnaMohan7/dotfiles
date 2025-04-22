@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+# TODO: This needs to be MACHINE_TYPE aware; goPersonal, goWork don't work for peronal only machines nor for work only machines
 ####################################################################################
 # FOLDER NAV ALIASES
 ####################################################################################
@@ -40,7 +41,7 @@ function goPersonal() {
 
 # replace BSD utils with GNU core utils installed via brew
 alias ls="gls --color=auto"
-alias cat="bat"  # if you want pretty `cat`, use bat
+alias cat="bat" # if you want pretty `cat`, use bat
 alias date="gdate"
 alias head="ghead"
 alias tail="gtail"
