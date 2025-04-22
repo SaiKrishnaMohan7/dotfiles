@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 
 # Prompt user for email addresses
 echo "🔹 Enter your PERSONAL GitHub email:"
