@@ -1,12 +1,6 @@
 [user]
-	name = Sai Mohan
-	email = sai.mohan@aquanow.io
-[personal]
-  name = Sai Krishna Mohan
-  email = m.saikrishna.msk@gmail.com
-[work]
-  name = Sai Mohan
-  email = sai.mohan@aquanow.io
+	name = Sai Krishna Mohan
+	email = m.saikrishna.msk@gmail.com
 [core]
   editor = code --wait
   excludesfile = ~/.gitignore
@@ -28,9 +22,10 @@
   default = simple
   # new in git 2.37, setup remote branch with tracking automatically
   autoSetupRemote = true
+[includeIf "gitdir:~/work/"]
+  path = ~/.gitconfig-work
 [pull]
 	rebase = true
 [alias]
-  whoami= !git config --global user.name && git config --global user.email
-  setpersonal= !git config --global user.name \""$(git config personal.name)"\" && git config --global user.email "$(git config personal.email)" && git whoami
-  setwork= !git config --global user.name \""$(git config work.name)"\" && git config --global user.email "$(git config work.email)" && git whoami
+  # whoami= !git config --global user.name && git config --global user.email # --global bypasses includeIf conditional logic
+  whoami = !git config user.name && git config user.email
